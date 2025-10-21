@@ -3,15 +3,15 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from locators.locators import (BUTTON_LOGIN_REGISTRATION, NO_ACCOUNT,LOGIN_BUTTON, AVATAR_USER, LOGOUT_BUTTON)
-
-driver = webdriver.Chrome()
+from url import (URL)
+from data import (BASE_EMAIL, BASE_PASSWORD)
 
 #Logout пользователя
 class TestLogoutUser:
      def test_user_logout(self, driver):
-        driver = webdriver.Chrome()
+
         #Зайти на сайт:
-        driver.get("https://qa-desk.stand.praktikum-services.ru/")
+        driver.get(URL)
 
         #Нажать на кнопку "Вход и регистрация"
         driver.find_element(BUTTON_LOGIN_REGISTRATION).click()
@@ -21,8 +21,8 @@ class TestLogoutUser:
         driver.find_element(NO_ACCOUNT).click()
         
         #Ввести e-mail, пароль, ввести повторно пароль
-        driver.find_element(By.ID, "email").send_keys("marishka@yandex.ru")
-        driver.find_element(By.ID, "password").send_keys("123456")
+        driver.find_element(By.ID, "email").send_keys(BASE_EMAIL)
+        driver.find_element(By.ID, "password").send_keys(BASE_PASSWORD)
         
         #Нажать кнопку "Войти"
         driver.find_element(LOGIN_BUTTON).click()
@@ -37,8 +37,7 @@ class TestLogoutUser:
         button_text = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located(BUTTON_LOGIN_REGISTRATION)).text
         assert button_text == "Вход и регистрация"
 
-        #Закрыть Браузер
-        driver.quit()
+
 
 
         
