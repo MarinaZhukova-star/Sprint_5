@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from locators.locators import (BUTTON_PLACE_AN_AD, MODAL_OUTH, BUTTON_LOGIN_REGISTRATION, LOGIN_BUTTON, AVATAR_USER, BUTTON_ADD_AD, PRODUCT_NAME, CATEGORY_DROPDOWN_LIST,CATEGORY_VALUE, CITY_DROPDOWN_LIST, CITY_VALUE, PUBLISH_BUTTON, MY_PROFILE_BUTTON, PRODUCT_DESCRIPTION, PRICE, CONDITION_SECONDHAND, CLASS_CARD, MY_AD)
+from locators.locators import (BUTTON_PLACE_AN_AD, MODAL_OUTH, BUTTON_LOGIN_REGISTRATION, LOGIN_BUTTON, AVATAR_USER, BUTTON_ADD_AD, PRODUCT_NAME, CATEGORY_DROPDOWN_LIST,CATEGORY_VALUE, CITY_DROPDOWN_LIST, CITY_VALUE, PUBLISH_BUTTON, MY_PROFILE_BUTTON, PRODUCT_DESCRIPTION, PRICE, CONDITION_SECONDHAND, CLASS_CARD, MY_AD, INPUT_EMAIL, INPUT_PASSWORD)
 from url import (URL)
 from data import (BASE_EMAIL, BASE_PASSWORD)
 
@@ -35,8 +35,8 @@ class TestCreatingAd:
         WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable(LOGIN_BUTTON))
         
         #Ввести e-mail, пароль, ввести повторно пароль
-        driver.find_element(By.ID, "email").send_keys(BASE_EMAIL)
-        driver.find_element(By.ID, "password").send_keys(BASE_PASSWORD)
+        driver.find_element(INPUT_EMAIL).send_keys(BASE_EMAIL)
+        driver.find_element(INPUT_PASSWORD).send_keys(BASE_PASSWORD)
         
         #Нажать кнопку "Войти"
         driver.find_element(LOGIN_BUTTON).click()

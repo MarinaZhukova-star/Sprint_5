@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from locators.locators import (BUTTON_LOGIN_REGISTRATION, NO_ACCOUNT, CREATE_ACCOUNT, AVATAR_USER, NAME_USER, ERROR)
+from locators.locators import (BUTTON_LOGIN_REGISTRATION, NO_ACCOUNT, CREATE_ACCOUNT, AVATAR_USER, NAME_USER, ERROR, INPUT_EMAIL, INPUT_PASSWORD, INPUT_SUBMINT_PASSWORD)
 from url import (URL)
 from data import (BASE_EMAIL, BASE_PASSWORD, ERROR_EMAIL)
 from helpers import generate_email
@@ -24,9 +24,9 @@ class TestRegistration:
         
         #Ввести e-mail, пароль, ввести повторно пароль
         email = generate_email()
-        driver.find_element(By.ID, "email").send_keys(email)
-        driver.find_element(By.ID, "password").send_keys(BASE_PASSWORD)
-        driver.find_element(By.ID, "submintPassword").send_keys(BASE_PASSWORD)
+        driver.find_element(INPUT_EMAIL).send_keys(email)
+        driver.find_element(INPUT_PASSWORD).send_keys(BASE_PASSWORD)
+        driver.find_element(INPUT_SUBMINT_PASSWORD).send_keys(BASE_PASSWORD)
 
         #Нажать кнопку "Создать аккаунт"
         driver.find_element(CREATE_ACCOUNT).click()
@@ -53,7 +53,7 @@ class TestRegistration:
         driver.find_element(NO_ACCOUNT).click()
 
         #Ввести e-mail не по маске *******@*******.*** и нажать на кнопку "Создать аккаунт"
-        driver.find_element(By.ID, "email").send_keys(ERROR_EMAIL)
+        driver.find_element(INPUT_EMAIL).send_keys(ERROR_EMAIL)
         driver.find_element(CREATE_ACCOUNT).click()
 
         #Поля "Email", "Пароль", "Повторите пароль" выделены красным, под полем "Email" отображается сообщение «Ошибка»
@@ -76,9 +76,9 @@ class TestRegistration:
         driver.find_element(NO_ACCOUNT).click()
 
         #Ввести e-mail, пароль, ввести повторно пароль уже существующего пользователя
-        driver.find_element(By.ID, "email").send_keys(BASE_EMAIL)
-        driver.find_element(By.ID, "password").send_keys(BASE_PASSWORD)
-        driver.find_element(By.ID, "submintPassword").send_keys(BASE_PASSWORD)
+        driver.find_element(INPUT_EMAIL).send_keys(BASE_EMAIL)
+        driver.find_element(INPUT_PASSWORD).send_keys(BASE_PASSWORD)
+        driver.find_element(INPUT_SUBMINT_PASSWORD).send_keys(BASE_PASSWORD)
 
         #Нажать кнопку "Создать аккаунт"
         driver.find_element(CREATE_ACCOUNT).click()

@@ -7,6 +7,9 @@ CREATE_ACCOUNT = (By.XPATH, '//button[text()="Создать аккаунт"]')
 LOGIN_BUTTON = (By.XPATH, '//button[text()="Войти"]')
 LOGOUT_BUTTON = (By.XPATH, '//button[text()="Выйти"]')
 ERROR = (By.XPATH, '//span[text()="Ошибка"]')
+INPUT_EMAIL = (By.ID, "email")
+INPUT_PASSWORD = (By.ID, "password")
+INPUT_SUBMINT_PASSWORD = (By.ID, "submintPassword")
 
 #Кнопки
 BUTTON_PLACE_AN_AD = (By.XPATH, './/button[text()="Разместить объявление"]')

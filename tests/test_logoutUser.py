@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from locators.locators import (BUTTON_LOGIN_REGISTRATION, NO_ACCOUNT,LOGIN_BUTTON, AVATAR_USER, LOGOUT_BUTTON)
+from locators.locators import (BUTTON_LOGIN_REGISTRATION, NO_ACCOUNT,LOGIN_BUTTON, AVATAR_USER, LOGOUT_BUTTON, INPUT_EMAIL, INPUT_PASSWORD)
 from url import (URL)
 from data import (BASE_EMAIL, BASE_PASSWORD)
 
@@ -21,8 +21,8 @@ class TestLogoutUser:
         driver.find_element(NO_ACCOUNT).click()
         
         #Ввести e-mail, пароль, ввести повторно пароль
-        driver.find_element(By.ID, "email").send_keys(BASE_EMAIL)
-        driver.find_element(By.ID, "password").send_keys(BASE_PASSWORD)
+        driver.find_element(INPUT_EMAIL).send_keys(BASE_EMAIL)
+        driver.find_element(INPUT_PASSWORD).send_keys(BASE_PASSWORD)
         
         #Нажать кнопку "Войти"
         driver.find_element(LOGIN_BUTTON).click()
